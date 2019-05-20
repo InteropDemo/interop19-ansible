@@ -16,7 +16,7 @@
         username: "{{ username }}"
         password: "{{ password }}"
         use_templates: True
-        template_dir: /Users/cyberdog/Ansible/ntc-ansible/ntc-templates/templates/
+        template_dir: ntc-templates/templates/
       register: result
 
     - debug: var=result
@@ -30,7 +30,7 @@
         username: "{{ username }}"
         password: "{{ password }}"
         use_templates: True
-        template_dir: /Users/cyberdog/Ansible/ntc-ansible/ntc-templates/templates/
+        template_dir: ntc-templates/templates/
       register: result2
 
     - debug: var=result2
