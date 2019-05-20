@@ -3,7 +3,7 @@ ansible_python_interpreter="/Users/cyberdog/PyProjects/Ansible/bin/python"
 
 [cisco_ios:vars]
 username=interop
-password=interopitx2019!
+password=interop19
 
 [cisco_ios]
 csr.interop19.interop.net
