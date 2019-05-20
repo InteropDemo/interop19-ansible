@@ -1,0 +1,12 @@
+[all:vars]
+ansible_python_interpreter="/Users/cyberdog/PyProjects/Ansible/bin/python"
+ansible_connection=ssh
+ansible_user=interop
+ansible_ssh_pass=interopitx2019!
+
+[cisco_ios:vars]
+username=interop
+password=interopitx2019!
+
+[cisco_ios]
+csr.interop19.interop.net
