@@ -1,0 +1,3 @@
+[submodule "ntc-ansible"]
+	path = ntc-ansible
+	url = git@github.com:networktocode/ntc-ansible.git
