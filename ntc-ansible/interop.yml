@@ -21,6 +21,7 @@
     - debug: var=result['response'][1]['link_status']
 
 - include: redlight.yml
+  include: repairint.yml
   when: "'administratively down' in status"
   vars:
     status: "{{ hostvars['csr.interop19.interop.net']['result']['response'][1]['link_status'] }}"
@@ -29,5 +30,3 @@
   when: "'up' in status"
   vars:
     status: "{{ hostvars['csr.interop19.interop.net']['result']['response'][1]['link_status'] }}"
-
-

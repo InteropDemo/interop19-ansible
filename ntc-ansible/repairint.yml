@@ -1,0 +1,20 @@
+
+- name: GET STRUCTURED DATA BACK FROM CLI DEVICES
+  hosts: all
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: NO SHUT GigE2
+      ntc_config_command:
+        connection: ssh
+        platform: cisco_ios_ssh
+        commands:
+          - interface GigabitEthernet2
+          - no shutdown
+          - end
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+      register: repairresult
+    - debug: var=repairresult
