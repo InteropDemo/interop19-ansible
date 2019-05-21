@@ -1,0 +1,19 @@
+- name: GET STRUCTURED DATA BACK FROM CLI DEVICES
+  hosts: all
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - name: GET ROUTES IN REAL TIME
+      ntc_show_command:
+        connection: ssh
+        platform: "{{ platform }}"
+        command: "{{ ip_route_command }}"
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        use_templates: True
+        template_dir: ntc-templates/templates/
+      register: result
+    - debug: var=result
