@@ -1,20 +1,24 @@
+# Interop19 Network Orchestration Hands-On Showcase
+The below instructions are for running an example playbook against the white switch in the Interop19 Network Orchestration Hands-On Showcase.  They can be modified to fit your needs.
+
 ## Setup Ansible Docker
 
 1. Setup the Ansible Container in Docker: [Interop19-Docker/Ansible](https://github.com/InteropDemo/interop19-docker/tree/origin/master/ansible "Interop19 Ansible Docker").
 
-## Interop19 Network Orchestration Hands-On Showcase
-The below instructions are for running an example playbook against the white switch in the Interop19 Network Orchestration Hands-On Showcase.  They can be modified to fit your needs.
+## STP Demo (interop-stp.yml)
 
-## STP Demo interop-stp.yml
+The interop-stp.yml Ansible playbook's primary purpose is to detect and provide auto-remediation of a down or redundant uplink port on the white demo lab switch.  After running this playbook, if both uplink ports are connected (GigEthernet1 and GigEthernet2), the playbook will make an API call to change the lightbulb to Green, and shutdown the redundant uplink port (GigEthernet2).  However, if GigEthernet2 is shutdown, and the link on GigEthernet1 is physically lost (unplugged), the playbook will make an API call to change the lightbulb to Red, and repair the uplink by enabling the GigEthernet2 connection.
 
-After connecting to your docker with `docker exec -it /bin/bash` you should be in `/interop19-ansible/ntc-ansible` automatically.
+### To get started:
 
-2. Download the latest changes to the repository by running:
+2. After connecting to your docker with `docker exec -it /bin/bash` you should be in `/interop19-ansible/ntc-ansible` automatically.
+
+3. Download the latest changes to the repository by running:
 ```console
 git pull
 ```
 
-3. To run the "STP" Playbook with our white switch execute the one below:
+4. To run the "STP" Playbook with our white switch execute the one below:
 ```console
 ansible-playbook interop-stp.yml -i interop-hosts
 ```
