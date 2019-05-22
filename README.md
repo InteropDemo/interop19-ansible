@@ -7,7 +7,7 @@ The below instructions are for running an example playbook against the white swi
 
 ## Auto Remediation Demo
 
-The interop-stp.yml Ansible playbook's primary purpose is to detect and provide auto-remediation of a down or redundant uplink port on the white demo lab switch (included in the interop-hosts inventory file).  
+The `interop-stp.yml` Ansible playbook's primary purpose is to detect and provide auto-remediation of a down or redundant uplink port on the white demo lab switch (included in the `interop-hosts` inventory file).  
 
 After running this playbook, if both uplink ports are connected (GigEthernet1 and GigEthernet2), the playbook will make an API call to change the lightbulb to Green, and shutdown the redundant uplink port (GigEthernet2).  
 
