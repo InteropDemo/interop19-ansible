@@ -9,21 +9,40 @@ The below instructions are for running an example playbook against the white swi
 
 After connecting to your docker with `docker exec -it /bin/bash` you should be in `/interop19-ansible/ntc-ansible` automatically.
 
-1. Download the latest changes to the repository by running:
+2. Download the latest changes to the repository by running:
 ```console
-[root@container]# git pull
+git pull
 ```
 
-2. To run the "STP" Playbook with our white switch execute the one below:
+3. To run the "STP" Playbook with our white switch execute the one below:
 ```console
-[root@container]# ansible-playbook interop-stp.yml -i interop-hosts
+ansible-playbook interop-stp.yml -i interop-hosts
 ```
 
 If Port GigEthernet1 interface is down, the light will turn red, and GigEthernet2 interface will be brought online.
 
 To loop the script, try:
 ```console
-[root@container]# `while sleep 2; do ansible-playbook interop-stp.yml -i interop-hosts; done`
+while sleep 2; do ansible-playbook interop-stp.yml -i interop-hosts; done
 ```
 
 ## Light Bulb Challenge
+
+For the lightbulb challenge, the following challenges are available.  The goal is to detect one of the following conditions, and include the appropriate lightbulb API playbook if the condition is true:
+
+- VLAN ID Present
+  - bluelight.yml
+- Static MAC Address Found (Directly Connected)
+  - purplelight.yml
+- Route Exists
+  - yellowlight.yml
+- CDP Neighbor Found
+  - whitelight.yml
+  
+Refer to the interop-stp.yml file for conditonal includes. Hint:
+```
+- include: bluelight.yml
+  when: "'phrase' in varableName"
+  vars:
+    variableName: "{{ hostvars['deviceName']['response']['itemName']
+```
