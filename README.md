@@ -9,14 +9,18 @@ The below instructions are for running an example playbook against the white swi
 
 After connecting to your docker with `docker exec -it /bin/bash` you should be in `/interop19-ansible/ntc-ansible` automatically.
 
-1. To run the "STP" Playbook with our white switch execute the one below:
+1. Download the latest changes to the repository by running:
 
-` ansible-playbook interop-stp.yml -i interop-hosts`
+[root@container]# `git pull`
+
+2. To run the "STP" Playbook with our white switch execute the one below:
+
+[root@container]# `ansible-playbook interop-stp.yml -i interop-hosts`
 
 If Port GigEthernet1 interface is down, the light will turn red, and GigEthernet2 interface will be brought online.
 
 To loop the script, try:
 
-`while sleep 2; do ansible-playbook interop-stp.yml -i interop-hosts; done`
+[root@container]# `while sleep 2; do ansible-playbook interop-stp.yml -i interop-hosts; done`
 
 ## Light Bulb Challenge
