@@ -5,9 +5,9 @@ The below instructions are for running an example playbook against the white swi
 
 1. Setup the Ansible Container in Docker: [Interop19-Docker/Ansible](https://github.com/InteropDemo/interop19-docker/tree/origin/master/ansible "Interop19 Ansible Docker").
 
-## STP Demo (interop-stp.yml)
+## Auto Remediation Demo
 
-The interop-stp.yml Ansible playbook's primary purpose is to detect and provide auto-remediation of a down or redundant uplink port on the white demo lab switch.  
+The interop-stp.yml Ansible playbook's primary purpose is to detect and provide auto-remediation of a down or redundant uplink port on the white demo lab switch (included in the interop-hosts inventory file).  
 
 After running this playbook, if both uplink ports are connected (GigEthernet1 and GigEthernet2), the playbook will make an API call to change the lightbulb to Green, and shutdown the redundant uplink port (GigEthernet2).  
 
