@@ -1,6 +1,6 @@
 ## Setup Ansible Docker
 
-[Interop19-Docker/Ansible](https://github.com/InteropDemo/interop19-docker/tree/origin/master/ansible "Interop19 Ansible Docker").
+1. Setup the Ansible Container in Docker: [Interop19-Docker/Ansible](https://github.com/InteropDemo/interop19-docker/tree/origin/master/ansible "Interop19 Ansible Docker").
 
 ## Interop19 Network Orchestration Hands-On Showcase
 The below instructions are for running an example playbook against the white switch in the Interop19 Network Orchestration Hands-On Showcase.  They can be modified to fit your needs.
@@ -10,19 +10,20 @@ The below instructions are for running an example playbook against the white swi
 After connecting to your docker with `docker exec -it /bin/bash` you should be in `/interop19-ansible/ntc-ansible` automatically.
 
 1. Download the latest changes to the repository by running:
-
 ```console
-[root@container]# `git pull`
+[root@container]# git pull
 ```
 
 2. To run the "STP" Playbook with our white switch execute the one below:
-
-[root@container]# `ansible-playbook interop-stp.yml -i interop-hosts`
+```console
+[root@container]# ansible-playbook interop-stp.yml -i interop-hosts
+```
 
 If Port GigEthernet1 interface is down, the light will turn red, and GigEthernet2 interface will be brought online.
 
 To loop the script, try:
-
+```console
 [root@container]# `while sleep 2; do ansible-playbook interop-stp.yml -i interop-hosts; done`
+```
 
 ## Light Bulb Challenge
