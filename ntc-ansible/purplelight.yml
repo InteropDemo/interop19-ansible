@@ -1,8 +1,8 @@
-- name: TEST PORT STATE UP
+- name: MAC FOUND LIGHTBULB
   hosts: 127.0.0.1
   connection: local
   tasks:
-  - name: CHANGE LIGHT TO GREEN
+  - name: CHANGE LIGHT TO FUSHSIA
     uri:
       url: https://maker.ifttt.com/trigger/Find_MAC_Turn_Fuchsia/with/key/ggptzVzHy_FBU0ZtWG0HC-JePGmZM7ZtGJN_ioVUfrY 
       method: POST

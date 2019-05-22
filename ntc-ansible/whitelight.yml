@@ -1,0 +1,8 @@
+- name: CDP NEIGHBOR LIGHTBULB
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: CHANGE LIGHT TO WHITE
+    uri:
+      url: https://maker.ifttt.com/trigger/CDP_Neighbor_Exist_Turn_White/with/key/ggptzVzHy_FBU0ZtWG0HC-JePGmZM7ZtGJN_ioVUfrY 
+      method: POST
