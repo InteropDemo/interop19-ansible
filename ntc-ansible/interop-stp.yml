@@ -1,0 +1,47 @@
+---
+- include: bluelight.yml
+
+- name: GET STRUCTURED DATA BACK FROM CLI DEVICES
+  hosts: all
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - name: GET INTERFACES IN REAL TIME
+      ntc_show_command:
+        connection: ssh
+        platform: "{{ platform }}"
+        command: "show interfaces"
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        secret: "{{ secret }}"
+        use_templates: True
+        template_dir: ntc-templates/templates/
+      register: result
+    - debug: var=result['response'][10]['link_status']
+
+- include: yellowlight.yml
+
+- include: redlight.yml
+  when: "'down' in status"
+  vars:
+    status: "{{ hostvars['10.10.1.100']['result']['response'][10]['link_status'] }}"
+  
+- include: interop-int2up.yml
+  when: "'down' in status"
+  vars:
+    status: "{{ hostvars['10.10.1.100']['result']['response'][10]['link_status'] }}"
+
+- include: greenlight.yml
+  when: "'up' in status"
+  vars:
+    status: "{{ hostvars['10.10.1.100']['result']['response'][10]['link_status'] }}"
+
+- include: interop-int2down.yml
+  when: "'up' in status"
+  vars:
+    status: "{{ hostvars['10.10.1.100']['result']['response'][10]['link_status'] }}"
+
+- include: purplelight.yml

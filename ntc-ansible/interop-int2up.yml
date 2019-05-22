@@ -1,0 +1,21 @@
+
+- name: BRING UP UPLINK 2
+  hosts: all
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: NO SHUT GigE2
+      ntc_config_command:
+        connection: ssh
+        platform: cisco_ios_ssh
+        commands:
+          - interface GigabitEthernet0/2
+          - no shutdown
+          - end
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        secret: "{{ secret }}"
+      register: upresult
+    - debug: var=upresult

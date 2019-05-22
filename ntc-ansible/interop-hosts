@@ -1,0 +1,10 @@
+[all:vars]
+ansible_python_interpreter="/Users/cyberdog/PyProjects/Ansible/bin/python"
+
+[cisco_ios:vars]
+username=interop
+password=interop19
+secret=interop19
+
+[cisco_ios]
+10.10.1.100
