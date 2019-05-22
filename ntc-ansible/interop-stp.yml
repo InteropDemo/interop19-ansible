@@ -1,5 +1,4 @@
 ---
-- include: bluelight.yml
 
 - name: GET STRUCTURED DATA BACK FROM CLI DEVICES
   hosts: all
@@ -22,7 +21,7 @@
       register: result
     - debug: var=result['response'][10]['link_status']
 
-- include: yellowlight.yml
+
 
 - include: redlight.yml
   when: "'down' in status"
@@ -43,5 +42,3 @@
   when: "'up' in status"
   vars:
     status: "{{ hostvars['10.10.1.100']['result']['response'][10]['link_status'] }}"
-
-- include: purplelight.yml
