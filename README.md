@@ -11,7 +11,9 @@ After connecting to your docker with `docker exec -it /bin/bash` you should be i
 
 1. Download the latest changes to the repository by running:
 
+```console
 [root@container]# `git pull`
+```
 
 2. To run the "STP" Playbook with our white switch execute the one below:
 
